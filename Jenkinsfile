@@ -60,7 +60,7 @@ pipeline {
     steps {
         withCredentials([string(credentialsId: 'argocd-token', variable: 'ARGOCD_TOKEN')]) {
             sh '''
-                argocd login 192.168.122.195:31002 --username admin --password $ARGOCD_TOKEN --insecure
+                argocd login 192.168.122.195:31002 --username admin --auth-token $ARGOCD_TOKEN --insecure
                 argocd app sync springboot-app
             '''
         }
