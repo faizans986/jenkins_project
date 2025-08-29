@@ -27,7 +27,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
-                    sh "mvn sonar:sonar -Dsonar.login=${SONARQUBE}"
+                    sh "mvn sonar:sonar -f java-app/pom.xml -Dsonar.login=${SONARQUBE}"
                 }
             }
         }
