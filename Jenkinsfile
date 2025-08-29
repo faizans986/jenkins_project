@@ -48,11 +48,7 @@ pipeline {
             }
         }
 
-        stage('Helm Deploy to Test') {
-            steps {
-                sh 'helm upgrade --install springboot ./spring-boot-app-helm -n test --create-namespace'
-            }
-        }
+       
 
         stage('User Acceptance Tests') {
             steps {
