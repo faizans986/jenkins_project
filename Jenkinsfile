@@ -57,9 +57,14 @@ pipeline {
         }
 
         stage('Promote to Prod via ArgoCD') {
-            steps {
-                sh 'argocd app sync springboot-app --auth-token $ARGOCD'
-            }
+    steps {
+        withCredentials([string(credentialsId: 'argocd-token', variable: 'ARGOCD_TOKEN')]) {
+            sh '''
+                argocd login <ARGOCD_SERVER> --username admin --password $ARGOCD_TOKEN --insecure
+                argocd app sync springboot-app
+            '''
         }
+    }
+}
     }
 }
