@@ -5,7 +5,7 @@ pipeline {
         jdk 'java'
     }
     environment {
-        SONARQUBE = credentials('bcb93ad0-6a6e-4373-ae60-4e7a29468198')
+        SONARQUBE = credentials('sonar-token')
         ARGOCD = credentials('argocd')
     }
     stages {
