@@ -24,15 +24,7 @@ pipeline {
                 sh 'mvn test -f java-app/pom.xml'
             }
         }
-        /*
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    sh "mvn sonar:sonar -f java-app/pom.xml -Dsonar.login=${SONARQUBE}"
-                }
-            }
-        }
-        */
+       
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t my-springboot-app:latest java-app/'
